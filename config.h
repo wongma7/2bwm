@@ -13,7 +13,7 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,0,0,0};
+static const uint8_t offsets[] = {0,19,0,19};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
@@ -32,15 +32,25 @@ static const bool inverted_colors = true;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {3,5,5,4};
-/* Windows that won't have a border.
- * It uses substring comparison with what is found in the WM_NAME
- * attribute of the window. You can test this using `xprop WM_NAME`
- */
+static const uint8_t borders[] = {2,4,4,2};
+/* Windows that won't have a border.*/
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
-static const char *menucmd[]   = { "", NULL };
+static const char *menucmd[]   = { "rofi", "-show", "run", NULL };
+static const char *gmrun[]     = { "rofi", "-show", "window", NULL };
+static const char *terminal[]  = { "gnome-terminal", NULL };
+static const char *lock[]      = { "xscreensaver-command", "-l", NULL };
+static const char *superp[]    = { "superp.sh", NULL };
+static const char *nautilus[]  = { "nautilus", NULL};
+static const char *click1[]    = { "xdotool","click", "1", NULL };
+static const char *click2[]    = { "xdotool","click", "2", NULL };
+static const char *click3[]    = { "xdotool","click", "3", NULL };
+/* Example
+static const char *vol_up[]    = { "amixer", "set", "Master", "unmute", "3%+", "-q", NULL };
+static const char *vol_down[]  = { "amixer", "set", "Master", "unmute", "3%-", "-q", NULL };
+static const char *vol_mute[]  = { "amixer", "set", "Master", "mute", "-q", NULL };
+*/
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
 {
@@ -81,6 +91,8 @@ static void halfandcentered(const Arg *arg)
 static key keys[] = {
     /* modifier           key            function           argument */
     // Focus to next/previous window
+    {  MOD ,              XK_p,        focusnext,         {.i=TWOBWM_FOCUS_NEXT}},
+    {  MOD |SHIFT,        XK_p,        focusnext,         {.i=TWOBWM_FOCUS_PREVIOUS}},
     {  MOD ,              XK_Tab,        focusnext,         {.i=TWOBWM_FOCUS_NEXT}},
     {  MOD |SHIFT,        XK_Tab,        focusnext,         {.i=TWOBWM_FOCUS_PREVIOUS}},
     // Kill a window
@@ -179,10 +191,31 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT}},
     // Start programs
     {  MOD ,              XK_w,          start,             {.com = menucmd}},
+<<<<<<< HEAD
+=======
+    {  MOD |SHIFT,        XK_w,          start,             {.com = gmrun}},
+    {  MOD |ALT,          XK_l,          start,             {.com = lock}},
+//    {  MOD ,              XK_p,          start,             {.com = superp}},
+    {  MOD ,              XK_o,          start,             {.com = nautilus}},
+>>>>>>> me
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
     {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
+<<<<<<< HEAD
+=======
+    // Fake clicks using xdotool
+    {  MOD |CONTROL,      XK_Up,         start,             {.com = click1}},
+    {  MOD |CONTROL,      XK_Down,       start,             {.com = click2}},
+	{  MOD |CONTROL,      XK_Right,      start,             {.com = click3}},
+
+/* example
+    {  0x000000,          0x1008ff13, start,             {.com = vol_up}},
+    {  0x000000,          0x1008ff11,  start,             {.com = vol_down}},
+    {  0x000000,          0x1008ff15, start,             {.com = vol_mute}},
+*/
+
+>>>>>>> me
     // Change current workspace
        DESKTOPCHANGE(     XK_1,                             0)
        DESKTOPCHANGE(     XK_2,                             1)

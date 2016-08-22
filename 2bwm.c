@@ -2821,9 +2821,11 @@ clientmessage(xcb_generic_event_t *ev)
 			return;
 
 		if ( false == cl->iconic ) {
-			if (e->type == ewmh->_NET_ACTIVE_WINDOW)
+			if (e->type == ewmh->_NET_ACTIVE_WINDOW) {
+				raisewindow(cl->id);
+				centerpointer(cl->id,cl);
 				setfocus(cl);
-			else
+			} else
 				hide();
 
 			return;
@@ -2831,6 +2833,8 @@ clientmessage(xcb_generic_event_t *ev)
 
 		cl->iconic = false;
 		xcb_map_window(conn, cl->id);
+		raisewindow(cl->id);
+		centerpointer(cl->id,cl);
 		setfocus(cl);
 	}
 	else if (e->type == ewmh->_NET_CURRENT_DESKTOP)

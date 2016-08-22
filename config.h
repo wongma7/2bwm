@@ -43,6 +43,7 @@ static const char *terminal[]  = { "gnome-terminal", NULL };
 static const char *lock[]      = { "xscreensaver-command", "-l", NULL };
 static const char *superp[]    = { "superp.sh", NULL };
 static const char *nautilus[]  = { "nautilus", NULL};
+static const char *pass[]      = { "rofi-pass", NULL};
 static const char *click1[]    = { "xdotool","click", "1", NULL };
 static const char *click2[]    = { "xdotool","click", "2", NULL };
 static const char *click3[]    = { "xdotool","click", "3", NULL };
@@ -190,24 +191,21 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_Right,      cursor_move,       {.i=TWOBWM_CURSOR_RIGHT}},
     {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT}},
     // Start programs
+    {  MOD ,              XK_Return,     start,             {.com = terminal}},
     {  MOD ,              XK_w,          start,             {.com = menucmd}},
-<<<<<<< HEAD
-=======
     {  MOD |SHIFT,        XK_w,          start,             {.com = gmrun}},
     {  MOD |ALT,          XK_l,          start,             {.com = lock}},
 //    {  MOD ,              XK_p,          start,             {.com = superp}},
     {  MOD ,              XK_o,          start,             {.com = nautilus}},
->>>>>>> me
+    {  MOD |SHIFT,        XK_p,          start,             {.com = pass}},
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
     {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
-<<<<<<< HEAD
-=======
     // Fake clicks using xdotool
     {  MOD |CONTROL,      XK_Up,         start,             {.com = click1}},
     {  MOD |CONTROL,      XK_Down,       start,             {.com = click2}},
-	{  MOD |CONTROL,      XK_Right,      start,             {.com = click3}},
+    {  MOD |CONTROL,      XK_Right,      start,             {.com = click3}},
 
 /* example
     {  0x000000,          0x1008ff13, start,             {.com = vol_up}},
@@ -215,7 +213,6 @@ static key keys[] = {
     {  0x000000,          0x1008ff15, start,             {.com = vol_mute}},
 */
 
->>>>>>> me
     // Change current workspace
        DESKTOPCHANGE(     XK_1,                             0)
        DESKTOPCHANGE(     XK_2,                             1)

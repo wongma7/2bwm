@@ -42,7 +42,7 @@ static const char *gmrun[]     = { "rofi", "-show", "window", NULL };
 static const char *terminal[]  = { "gnome-terminal", NULL };
 static const char *lock[]      = { "xscreensaver-command", "-l", NULL };
 static const char *superp[]    = { "superp.sh", NULL };
-static const char *nautilus[]  = { "nautilus", NULL};
+static const char *nautilus[]  = { "thunar", NULL};
 static const char *pass[]      = { "rofi-pass", NULL};
 static const char *click1[]    = { "xdotool","click", "1", NULL };
 static const char *click2[]    = { "xdotool","click", "2", NULL };
@@ -195,7 +195,7 @@ static key keys[] = {
     {  MOD ,              XK_w,          start,             {.com = menucmd}},
     {  MOD |SHIFT,        XK_w,          start,             {.com = gmrun}},
     {  MOD |ALT,          XK_l,          start,             {.com = lock}},
-//    {  MOD ,              XK_p,          start,             {.com = superp}},
+    {  MOD ,              XK_p,          start,             {.com = superp}},
     {  MOD ,              XK_o,          start,             {.com = nautilus}},
     {  MOD |SHIFT,        XK_p,          start,             {.com = pass}},
     // Exit or restart 2bwm

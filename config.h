@@ -13,7 +13,7 @@ static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
-static const uint8_t offsets[] = {0,19,0,19};
+static const uint8_t offsets[] = {0,20,0,20};
 ///---Colors---///
 /*0)focuscol         1)unfocuscol
  *2)fixedcol         3)unkilcol
@@ -32,7 +32,7 @@ static const bool inverted_colors = true;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {2,4,4,2};
+static const uint8_t borders[] = {3,5,5,4};
 /* Windows that won't have a border.*/
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar", "xclock"};
@@ -44,6 +44,7 @@ static const char *lock[]      = { "xscreensaver-command", "-l", NULL };
 static const char *superp[]    = { "superp.sh", NULL };
 static const char *nautilus[]  = { "thunar", NULL};
 static const char *pass[]      = { "rofi-pass", NULL};
+static const char *colemak[]   = { "colemak.sh", NULL};
 static const char *click1[]    = { "xdotool","click", "1", NULL };
 static const char *click2[]    = { "xdotool","click", "2", NULL };
 static const char *click3[]    = { "xdotool","click", "3", NULL };
@@ -137,7 +138,7 @@ static key keys[] = {
     {  MOD ,              XK_Home,       resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_GROW}},
     {  MOD ,              XK_End,        resizestep_aspect, {.i=TWOBWM_RESIZE_KEEP_ASPECT_SHRINK}},
     // Full screen window without borders
-    {  MOD ,              XK_x,         maximize,          {.i=TWOBWM_FULLSCREEN}},
+    {  MOD ,              XK_x,          maximize,          {.i=TWOBWM_FULLSCREEN}},
     //Full screen window without borders overiding offsets
     {  MOD |SHIFT ,       XK_x,          maximize,          {.i=TWOBWM_FULLSCREEN_OVERRIDE_OFFSETS}},
     // Maximize vertically
@@ -198,6 +199,7 @@ static key keys[] = {
     {  MOD ,              XK_p,          start,             {.com = superp}},
     {  MOD ,              XK_o,          start,             {.com = nautilus}},
     {  MOD |SHIFT,        XK_p,          start,             {.com = pass}},
+    {  MOD |SHIFT,        XK_a,          start,             {.com = colemak}},
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},

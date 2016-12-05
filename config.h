@@ -39,7 +39,7 @@ static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
 static const char *menucmd[]   = { "rofi", "-show", "run", NULL };
 static const char *gmrun[]     = { "rofi", "-show", "window", NULL };
-static const char *terminal[]  = { "gnome-terminal", NULL };
+static const char *terminal[]  = { "urxvt256c", NULL };
 static const char *lock[]      = { "xscreensaver-command", "-l", NULL };
 static const char *superp[]    = { "superp.sh", NULL };
 static const char *nautilus[]  = { "thunar", NULL};

@@ -221,11 +221,13 @@ static key keys[] = {
        DESKTOPCHANGE(     XK_3,                             2)
        DESKTOPCHANGE(     XK_4,                             3)
        DESKTOPCHANGE(     XK_5,                             4)
+			 /*
        DESKTOPCHANGE(     XK_6,                             5)
        DESKTOPCHANGE(     XK_7,                             6)
        DESKTOPCHANGE(     XK_8,                             7)
        DESKTOPCHANGE(     XK_9,                             8)
        DESKTOPCHANGE(     XK_0,                             9)
+			 */
 };
 // the last argument makes it a root window only event
 static Button buttons[] = {

@@ -2822,8 +2822,8 @@ clientmessage(xcb_generic_event_t *ev)
 
 		if ( false == cl->iconic ) {
 			if (e->type == ewmh->_NET_ACTIVE_WINDOW) {
-				raisewindow(cl->id);
-				centerpointer(cl->id,cl);
+				// raisewindow(cl->id);
+				// centerpointer(cl->id,cl);
 				setfocus(cl);
 			} else
 				hide();
